@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap Hosam | الأكاديمية الاحترافية للبرمجة</title>
+    
+    <!-- خط تجوال العربي الفاخر من Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #030712;
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --neon-blue: #38bdf8;
+            --neon-green: #22c55e;
+            --neon-gold: #facc15;
+            --neon-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 15px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ==================== خلفية ديناميكية متحركة ==================== */
+        .bg-glow-1, .bg-glow-2 {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+            z-index: 0;
+            animation: floatGlow 10s infinite alternate ease-in-out;
+        }
+
+        .bg-glow-1 {
+            top: -50px;
+            right: -50px;
+            background: var(--neon-blue);
+        }
+
+        .bg-glow-2 {
+            bottom: -50px;
+            left: -50px;
+            background: #8b5cf6;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 40px) scale(1.2); }
+        }
+
+        /* ==================== شاشة الانترو الإبداعية ==================== */
+        #intro-screen {
+            position: fixed;
+            inset: 0;
+            background: #020617;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .intro-brand {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+            animation: pulseText 1.5s infinite alternate;
+            margin-bottom: 8px;
+        }
+
+        .intro-sub {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .loader-track {
+            width: 200px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+            box-shadow: 0 0 15px var(--neon-blue);
+            animation: fillProgress 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes fillProgress {
+            to { width: 100%; }
+        }
+
+        @keyframes pulseText {
+            0% { transform: scale(0.98); opacity: 0.8; }
+            100% { transform: scale(1.03); opacity: 1; }
+        }
+
+        .intro-fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* ==================== الحاوية الرئيسية (Glassmorphism) ==================== */
+        .main-card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 950px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+                        0 0 30px rgba(56, 189, 248, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        /* قسم الصورة */
+        .hero-image-wrap {
+            flex: 1 1 380px;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4), rgba(2, 6, 23, 0.8));
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 20px;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .main-card:hover .hero-img {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        /* قسم المحتوى */
+        .content-wrap {
+            flex: 1 1 450px;
+            padding: 40px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-title span {
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+
+        .header-sub {
+            color: var(--text-muted);
+            font-size: 14.5px;
+            margin-bottom: 28px;
+        }
+
+        /* شبكة الكورسات */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 25px;
+        }
+
+        .course-box {
+            background: rgba(30, 41, 59, 0.4);
+            border-radius: 18px;
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .course-box.py::before { background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
+        .course-box.js::before { background: var(--neon-gold); box-shadow: 0 0 10px var(--neon-gold); }
+
+        .course-box:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .c-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .py .c-title { color: var(--neon-blue); }
+        .js .c-title { color: var(--neon-gold); }
+
+        .price-badge {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 12.5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+        }
+
+        .price-badge strong {
+            color: var(--neon-green);
+            font-size: 13.5px;
+        }
+
+        /* صندوق فودافون كاش */
+        .voda-card {
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.2), rgba(159, 18, 57, 0.4));
+            border: 1px solid rgba(225, 29, 72, 0.4);
+            border-radius: 16px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 20px -5px rgba(225, 29, 72, 0.2);
+        }
+
+        .voda-card span {
+            font-size: 13px;
+            color: #fecdd3;
+        }
+
+        .voda-num {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 2px;
+            display: block;
+            margin-top: 4px;
+            text-shadow: 0 0 10px rgba(225, 29, 72, 0.6);
+        }
+
+        /* النموذج */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+            background: rgba(15, 23, 42, 1);
+        }
+
+        /* زرار الواتساب الخرافي */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border: none;
+            border-radius: 14px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 25px -5px rgba(34, 197, 94, 0.5);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -5px rgba(34, 197, 94, 0.7);
+            background: linear-gradient(135deg, #28d867, #18b552);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* تجاوب الشاشات */
+        @media (max-width: 768px) {
+            .hero-image-wrap { display: none; }
+            .content-wrap { padding: 30px 20px; }
+            .courses-grid { grid-template-columns: 1fr; }
+            .header-title { font-size: 26px; text-align: center; }
+            .header-sub { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- خلفية النيون التفاعلية -->
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- شاشة التحميل الافتتاحية -->
+    <div id="intro-screen">
+        <div class="intro-brand">Cap Hosam</div>
+        <div class="intro-sub">أكاديمية تعليم البرمجة الاحترافية ⚡</div>
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+
+    <!-- كارت الموقع الرئيسي -->
+    <main class="main-card">
+        
+        <!-- القسم الأيسر: الصورة -->
+        <div class="hero-image-wrap">
+            <img src="https://i.ibb.co/JjtZW59R/Gemini-Generated-Image-nzn0xnzn0xnzn0xn.png" alt="Cap Hosam Courses" class="hero-img">
+        </div>
+
+        <!-- القسم الأيمن: المحتوى والنموذج -->
+        <div class="content-wrap">
+            <h1 class="header-title">Cap <span>Hosam</span> 👨‍💻</h1>
+            <p class="header-sub">مبرمج مواقع ويب وترجمة احترافية | كورسات تبدأ معك من الصفر</p>
+
+            <!-- شبكة الكورسات -->
+            <div class="courses-grid">
+                <!-- Python -->
+                <div class="course-box py">
+                    <div class="c-title">🚀 كورس Python</div>
+                    <div class="price-badge">
+                        <span>ساعتين تعليمي</span>
+                        <strong>250 EGP</strong>
+                    </div>
+                    <div class="price-badge">
+                        <span>4 ساعات شامل</span>
+                        <strong>500 EGP</strong>
+                    </div>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="course-box js">
+                    <div class="c-title">⚡ كورس JavaScript</div>
+                    <div class="price-badge">
+                        <span>3 ساعات تطبيق</span>
+                        <strong>300 EGP</strong>
+                    </div>
+                    <div class="price-badge">
+                        <span>4 ساعات احترافي</span>
+                        <strong>650 EGP</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تحويل فودافون كاش -->
+            <div class="voda-card">
+                <span>📲 رقم التحويل المباشر (فودافون كاش):</span>
+                <span class="voda-num">01029245615</span>
+            </div>
+
+            <!-- نموذج الطلب -->
+            <div class="form-group">
+                <input type="text" id="userName" placeholder="الاسم الكريم">
+                <input type="tel" id="userPhone" placeholder="رقم الموبايل الذي حولت منه">
+                
+                <select id="courseSelect">
+                    <option value="" disabled selected>اختر الكورس الذي قمت بتحويل قيمته</option>
+                    <option value="بايثون - 2 ساعة (250 EGP)">Python - ساعتين (250 EGP)</option>
+                    <option value="بايثون - 4 ساعات (500 EGP)">Python - 4 ساعات (500 EGP)</option>
+                    <option value="جافاسكريبت - 3 ساعات (300 EGP)">JavaScript - 3 ساعات (300 EGP)</option>
+                    <option value="جافاسكريبت - 4 ساعات (650 EGP)">JavaScript - 4 ساعات (650 EGP)</option>
+                </select>
+
+                <button class="submit-btn" onclick="sendToWhatsapp()">
+                    <span>تأكيد الاشتراك واستلام الكورس عبر WhatsApp</span>
+                    💬
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        // اخفاء شاشة الانترو بعد التحميل
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const intro = document.getElementById('intro-screen');
+                if (intro) intro.classList.add('intro-fade-out');
+            }, 2000);
+        });
+
+        // تحويل الواتساب الاحترافي
+        function sendToWhatsapp() {
+            const name = document.getElementById('userName').value.trim();
+            const phone = document.getElementById('userPhone').value.trim();
+            const course = document.getElementById('courseSelect').value;
+            
+            if(!name || !phone || !course) {
+                alert('من فضلك ادخل بياناتك واختار الكورس لتأكيد التحويل واستلام رابط الكورس فوراً 🌹');
+                return;
+            }
+            
+            const myNumber = "201029245615";
+            const message = `أهلاً كابتن حسام (Cap Hosam) 👋\n\nأنا: ${name}\nقمت بتحويل مبلغ كورس: (${course})\nمن رقم الموبايل: ${phone}\n\nومنتظر استلام رابط الكورس.. شكراً لك! ✨`;
+            
+            const whatsappUrl = `https://wa.me/${myNumber}?text=${encodeURIComponent(message)}`;
+            window.location.href = whatsappUrl;
+        }
+    </script>
+</body>
+</html>
