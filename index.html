@@ -7,89 +7,76 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --bg-dark: #070a12;
-            --card-bg: #0f172a;
-            --primary: #38bdf8;
-            --green: #22c55e;
-            --gold: #f59e0b;
-            --purple: #a855f7;
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
-        /* ARGB ANIMATION EFFECT */
-        @keyframes argb-glow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .argb-box {
-            position: relative;
-            border-radius: 20px;
-            padding: 2.5px;
-            background: linear-gradient(90deg, #ff007f, #00f0ff, #00ff66, #a855f7, #ff007f);
-            background-size: 350% 350%;
-            animation: argb-glow 4s ease infinite;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
-            margin-bottom: 20px;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Tajawal', sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text);
-            line-height: 1.6;
-            padding-bottom: 40px;
+            background-color: #050811;
+            color: #ffffff;
+            padding: 15px 10px 40px;
         }
 
-        .section-container {
-            padding: 10px 15px;
-            max-width: 650px;
+        .container {
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        /* BANNER LOGO */
+        /* ARGB ANIMATION ENGINE */
+        @keyframes rgb-border {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .rgb-card {
+            position: relative;
+            background: linear-gradient(90deg, #ff0055, #00e5ff, #00ff66, #b000ff, #ff0055);
+            background-size: 300% 300%;
+            animation: rgb-border 3.5s linear infinite;
+            padding: 2px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+        }
+
+        .card-content {
+            background: #0d1322;
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        /* HEADER BANNER */
         .logo-banner {
-            background: var(--card-bg);
-            border-radius: 18px;
-            padding: 20px 15px;
             text-align: center;
         }
 
         .logo-banner h1 {
             font-size: 28px;
             font-weight: 900;
-            color: #fff;
-            margin-bottom: 5px;
         }
 
         .logo-banner h1 span {
-            background: linear-gradient(90deg, #38bdf8, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #00e5ff;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
         }
 
-        .logo-banner .tagline {
-            color: var(--green);
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 15px;
+        .sub-title {
+            color: #00ff66;
+            font-size: 13px;
             direction: ltr;
+            margin-top: 2px;
+            margin-bottom: 12px;
+            font-weight: bold;
         }
 
-        .services-pills {
+        .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
@@ -97,247 +84,200 @@
             margin-bottom: 15px;
         }
 
-        .pill {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #e2e8f0;
-            padding: 5px 11px;
-            border-radius: 12px;
-            font-size: 11.5px;
-            font-weight: 500;
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 11px;
         }
 
-        .pill.tech { border-color: var(--primary); color: var(--primary); }
-        .pill.course { border-color: var(--gold); color: var(--gold); }
-        .pill.design { border-color: var(--purple); color: var(--purple); }
-
-        .banner-phone {
-            background: rgba(34, 197, 94, 0.15);
-            border: 1px solid var(--green);
+        .phone-box {
+            background: rgba(0, 255, 102, 0.1);
+            border: 1px solid #00ff66;
             color: #fff;
-            padding: 6px 16px;
-            border-radius: 30px;
+            padding: 6px 14px;
+            border-radius: 20px;
             display: inline-block;
-            font-size: 13.5px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: bold;
         }
 
         /* BUTTONS */
-        .hero {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(90deg, #22c55e, #16a34a);
-            color: #fff;
-            padding: 14px 24px;
-            border-radius: 16px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 16px;
+        .btn-wa {
             display: block;
             text-align: center;
-            box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+            background: #00ff66;
+            color: #000;
+            font-weight: 900;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 16px;
         }
 
-        .sec-title {
+        /* LISTS */
+        .section-header {
             text-align: center;
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 900;
+            margin-bottom: 15px;
             color: #fff;
         }
 
-        /* CARDS WITH INNER CONTENT */
-        .card-inner {
-            background: var(--card-bg);
-            border-radius: 18px;
-            padding: 18px;
-        }
-
-        .card-title {
-            font-size: 17.5px;
-            font-weight: 800;
+        .card-header {
+            font-size: 16px;
+            font-weight: 900;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .service-list {
+        .item-list {
             list-style: none;
         }
 
-        .service-list li {
-            font-size: 13.5px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
+        .item-list li {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-            padding-bottom: 8px;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 13px;
+            color: #cbd5e1;
         }
 
-        .service-list li:last-child {
+        .item-list li:last-child {
             border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
         }
 
-        .service-list li span::before {
-            content: "❖ ";
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .btn-select {
-            background: rgba(56, 189, 248, 0.15);
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
+        .btn-action {
+            background: rgba(0, 229, 255, 0.1);
+            color: #00e5ff;
+            border: 1px solid #00e5ff;
+            padding: 4px 12px;
+            border-radius: 6px;
             text-decoration: none;
-            transition: 0.2s;
+            font-weight: bold;
+            font-size: 12px;
         }
 
         /* FORM */
-        .form-box {
-            background: var(--card-bg);
-            border-radius: 18px;
-            padding: 20px;
-        }
-
-        .form-box h3 {
-            text-align: center;
-            margin-bottom: 15px;
-            font-size: 18px;
-            color: #fff;
-        }
-
         input, select, textarea {
             width: 100%;
-            padding: 12px;
-            background: #070a12;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
+            padding: 10px;
+            background: #050811;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
             color: #fff;
-            font-size: 13.5px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            font-size: 13px;
             outline: none;
         }
 
         input:focus, select:focus, textarea:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+            border-color: #00e5ff;
         }
 
-        .btn-submit {
+        .btn-send {
             width: 100%;
-            background: linear-gradient(90deg, #22c55e, #16a34a);
-            color: #fff;
+            background: #00e5ff;
+            color: #000;
             border: none;
-            padding: 14px;
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: 16px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 900;
+            font-size: 15px;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
         }
 
         footer {
             text-align: center;
-            margin-top: 25px;
-            color: var(--text-muted);
-            font-size: 12px;
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="section-container">
-        <!-- 1. البنر الرئيسي بـ ARGB -->
-        <div class="argb-box" style="margin-top: 10px;">
-            <div class="logo-banner">
+    <div class="container">
+
+        <!-- 1. البنر الرئيسي -->
+        <div class="rgb-card">
+            <div class="card-content logo-banner">
                 <h1>💻 Cap <span>Hosam</span></h1>
-                <div class="tagline">&lt;/&gt; Web Developer & Graphic Designer</div>
-                
-                <div class="services-pills">
-                    <span class="pill tech">صنع مواقع ويب سايت</span>
-                    <span class="pill tech">متاجر إلكترونية</span>
-                    <span class="pill tech">استضافة سحابية</span>
-                    <span class="pill course">كورسات Python & JavaScript</span>
-                    <span class="pill design">تصميم لوجو</span>
-                    <span class="pill design">ليتر هيد</span>
-                    <span class="pill design">فولدر</span>
-                    <span class="pill design">غلاف سوشيال</span>
-                    <span class="pill design">لافتات</span>
-                    <span class="pill">أي نشاط متوفر بإذن الله</span>
+                <div class="sub-title">&lt;/&gt; Web Developer & Graphic Designer</div>
+                <div class="tags">
+                    <span class="tag">صنع مواقع</span>
+                    <span class="tag">متاجر إلكترونية</span>
+                    <span class="tag">استضافة سحابية</span>
+                    <span class="tag">كورسات Python & JS</span>
+                    <span class="tag">تصميم لوجو</span>
+                    <span class="tag">ليتر هيد</span>
+                    <span class="tag">فولدر</span>
+                    <span class="tag">غلاف سوشيال</span>
+                    <span class="tag">لافتات</span>
                 </div>
-
-                <div class="banner-phone">
-                    📲 للتواصل والطلب: <strong>01029245615</strong>
-                </div>
+                <div class="phone-box">📲 للتواصل والطلب: 01029245615</div>
             </div>
         </div>
 
-        <!-- 2. زر الواتساب بـ ARGB -->
-        <div class="argb-box" style="border-radius: 18px;">
-            <a href="https://wa.me/201029245615" class="btn-whatsapp">💬 تواصل عبر الواتساب مباشرة</a>
+        <!-- 2. زر الواتساب المباشر -->
+        <div class="rgb-card">
+            <a href="https://wa.me/201029245615" class="btn-wa">💬 تواصل عبر الواتساب مباشرة</a>
         </div>
 
-        <h2 class="sec-title">قائمة الخدمات المتاحة 💎</h2>
+        <div class="section-header">قائمة الخدمات المتاحة 💎</div>
 
-        <!-- 3. كارت البرمجة بـ ARGB -->
-        <div class="argb-box">
-            <div class="card-inner">
-                <div class="card-title" style="color: var(--primary);">🌐 البرمجة وتطوير المواقع</div>
-                <ul class="service-list">
-                    <li><span>صنع مواقع ويب سايت</span> <a href="#order" class="btn-select" onclick="setService('صنع مواقع ويب سايت')">طلب</a></li>
-                    <li><span>صنع متاجر إلكترونية</span> <a href="#order" class="btn-select" onclick="setService('صنع متاجر إلكترونية')">طلب</a></li>
-                    <li><span>صنع مواقع استضافة سحابية</span> <a href="#order" class="btn-select" onclick="setService('صنع مواقع استضافة سحابية')">طلب</a></li>
-                    <li><span>أي نشاط آخر متوفر بإذن الله</span> <a href="#order" class="btn-select" onclick="setService('مشروع/نشاط مخصص')">طلب</a></li>
+        <!-- 3. البرمجة -->
+        <div class="rgb-card">
+            <div class="card-content">
+                <div class="card-header" style="color: #00e5ff;">🌐 البرمجة وتطوير المواقع</div>
+                <ul class="item-list">
+                    <li><span>❖ صنع مواقع ويب سايت</span> <a href="#order" class="btn-action" onclick="setService('صنع مواقع ويب سايت')">طلب</a></li>
+                    <li><span>❖ صنع متاجر إلكترونية</span> <a href="#order" class="btn-action" onclick="setService('صنع متاجر إلكترونية')">طلب</a></li>
+                    <li><span>❖ صنع مواقع استضافة سحابية</span> <a href="#order" class="btn-action" onclick="setService('صنع مواقع استضافة سحابية')">طلب</a></li>
+                    <li><span>❖ أي نشاط آخر متوفر بإذن الله</span> <a href="#order" class="btn-action" onclick="setService('مشروع مخصص')">طلب</a></li>
                 </ul>
             </div>
         </div>
 
-        <!-- 4. كارت الكورسات بـ ARGB -->
-        <div class="argb-box">
-            <div class="card-inner">
-                <div class="card-title" style="color: var(--gold);">🎓 كورسات البرمجة (Courses)</div>
-                <ul class="service-list">
-                    <li><span>كورس Python Language</span> <a href="#order" class="btn-select" onclick="setService('كورس Python')">حجز</a></li>
-                    <li><span>كورس JavaScript</span> <a href="#order" class="btn-select" onclick="setService('كورس JavaScript')">حجز</a></li>
+        <!-- 4. الكورسات -->
+        <div class="rgb-card">
+            <div class="card-content">
+                <div class="card-header" style="color: #ffcc00;">🎓 كورسات البرمجة (Courses)</div>
+                <ul class="item-list">
+                    <li><span>❖ كورس Python Language</span> <a href="#order" class="btn-action" onclick="setService('كورس Python')">حجز</a></li>
+                    <li><span>❖ كورس JavaScript</span> <a href="#order" class="btn-action" onclick="setService('كورس JavaScript')">حجز</a></li>
                 </ul>
             </div>
         </div>
 
-        <!-- 5. كارت التصميم بـ ARGB -->
-        <div class="argb-box">
-            <div class="card-inner">
-                <div class="card-title" style="color: var(--purple);">🎨 خدمات التصميم والتأسيس</div>
-                <ul class="service-list">
-                    <li><span>تصميم لوجو احترافي</span> <a href="#order" class="btn-select" onclick="setService('تصميم لوجو احترافي')">طلب</a></li>
-                    <li><span>تصميم ليتر هيد (Letterhead)</span> <a href="#order" class="btn-select" onclick="setService('تصميم ليتر هيد')">طلب</a></li>
-                    <li><span>تصميم الفولدر</span> <a href="#order" class="btn-select" onclick="setService('تصميم الفولدر')">طلب</a></li>
-                    <li><span>تصميم غلاف مواقع سوشيال</span> <a href="#order" class="btn-select" onclick="setService('تصميم غلاف سوشيال')">طلب</a></li>
-                    <li><span>تصميم لافتات</span> <a href="#order" class="btn-select" onclick="setService('تصميم لافتات')">طلب</a></li>
+        <!-- 5. التصميم -->
+        <div class="rgb-card">
+            <div class="card-content">
+                <div class="card-header" style="color: #b000ff;">🎨 خدمات التصميم والتأسيس</div>
+                <ul class="item-list">
+                    <li><span>❖ تصميم لوجو احترافي</span> <a href="#order" class="btn-action" onclick="setService('تصميم لوجو احترافي')">طلب</a></li>
+                    <li><span>❖ تصميم ليتر هيد</span> <a href="#order" class="btn-action" onclick="setService('تصميم ليتر هيد')">طلب</a></li>
+                    <li><span>❖ تصميم الفولدر</span> <a href="#order" class="btn-action" onclick="setService('تصميم الفولدر')">طلب</a></li>
+                    <li><span>❖ تصميم غلاف سوشيال</span> <a href="#order" class="btn-action" onclick="setService('تصميم غلاف سوشيال')">طلب</a></li>
+                    <li><span>❖ تصميم لافتات</span> <a href="#order" class="btn-action" onclick="setService('تصميم لافتات')">طلب</a></li>
                 </ul>
             </div>
         </div>
 
-        <!-- 6. كارت نموذج الطلب بـ ARGB -->
-        <div class="argb-box" id="order">
-            <div class="form-box">
-                <h3>تأكيد الطلب 📲</h3>
+        <!-- 6. نموذج الطلب -->
+        <div class="rgb-card" id="order">
+            <div class="card-content">
+                <div class="card-header" style="color: #00ff66; text-align: center; display: block;">تأكيد الطلب 📲</div>
                 <input type="text" id="cName" placeholder="الاسم الكريم">
                 <input type="tel" id="cPhone" placeholder="رقم الموبايل / الواتساب">
                 
                 <select id="cService">
-                    <option value="" disabled selected>اختر الخدمة أو الكورس المطلوبة</option>
+                    <option value="" disabled selected>اختر الخدمة المطلوبة</option>
                     <option value="صنع مواقع ويب سايت">صنع مواقع ويب سايت</option>
                     <option value="صنع متاجر إلكترونية">صنع متاجر إلكترونية</option>
                     <option value="صنع مواقع استضافة سحابية">صنع مواقع استضافة سحابية</option>
@@ -346,19 +286,18 @@
                     <option value="تصميم لوجو احترافي">تصميم لوجو احترافي</option>
                     <option value="تصميم ليتر هيد">تصميم ليتر هيد</option>
                     <option value="تصميم الفولدر">تصميم الفولدر</option>
-                    <option value="تصميم غلاف سوشيال">تصميم غلاف مواقع سوشيال</option>
+                    <option value="تصميم غلاف سوشيال">تصميم غلاف سوشيال</option>
                     <option value="تصميم لافتات">تصميم لافتات</option>
                     <option value="نشاط مخصص آخر">نشاط مخصص آخر</option>
                 </select>
 
-                <textarea id="cNotes" rows="3" placeholder="ملاحظات إضافية (اختياري)"></textarea>
-                <button class="btn-submit" onclick="sendToWA()">📲 إرسال الطلب للواتساب</button>
+                <textarea id="cNotes" rows="2" placeholder="ملاحظات إضافية (اختياري)"></textarea>
+                <button class="btn-send" onclick="sendToWA()">📲 إرسال الطلب للواتساب</button>
             </div>
         </div>
 
-        <footer>
-            جميع الحقوق محفوظة © Cap Hosam 💻
-        </footer>
+        <footer>جميع الحقوق محفوظة © Cap Hosam 💻</footer>
+
     </div>
 
     <script>
