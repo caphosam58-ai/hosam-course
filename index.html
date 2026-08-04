@@ -11,8 +11,8 @@
 
     <style>
         :root {
-            --bg-dark: #090d16;
-            --card-bg: #111827;
+            --bg-dark: #070a12;
+            --card-bg: #0f172a;
             --primary: #38bdf8;
             --green: #22c55e;
             --gold: #f59e0b;
@@ -21,11 +21,22 @@
             --text-muted: #94a3b8;
         }
 
-        /* ARGB ANIMATION KEYFRAMES */
+        /* ARGB ANIMATION EFFECT */
         @keyframes argb-glow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+
+        .argb-box {
+            position: relative;
+            border-radius: 20px;
+            padding: 2.5px;
+            background: linear-gradient(90deg, #ff007f, #00f0ff, #00ff66, #a855f7, #ff007f);
+            background-size: 350% 350%;
+            animation: argb-glow 4s ease infinite;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+            margin-bottom: 20px;
         }
 
         * {
@@ -43,27 +54,17 @@
             padding-bottom: 40px;
         }
 
-        /* BANNER LOGO WITH ARGB LIGHTING */
-        .logo-banner-container {
-            padding: 15px;
+        .section-container {
+            padding: 10px 15px;
             max-width: 650px;
-            margin: 10px auto 0;
+            margin: 0 auto;
         }
 
-        .argb-wrapper {
-            position: relative;
-            border-radius: 22px;
-            padding: 3px;
-            background: linear-gradient(90deg, #ff007f, #00f0ff, #00ff66, #ff007f);
-            background-size: 300% 300%;
-            animation: argb-glow 4s ease infinite;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
-        }
-
+        /* BANNER LOGO */
         .logo-banner {
-            background: #0f172a;
-            border-radius: 20px;
-            padding: 22px 18px;
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 20px 15px;
             text-align: center;
         }
 
@@ -72,7 +73,6 @@
             font-weight: 900;
             color: #fff;
             margin-bottom: 5px;
-            letter-spacing: 1px;
         }
 
         .logo-banner h1 span {
@@ -122,62 +122,47 @@
             font-weight: 700;
         }
 
-        /* GENERAL SECTIONS */
-        .section-container {
-            padding: 15px 20px;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
+        /* BUTTONS */
         .hero {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .btn-whatsapp {
             background: linear-gradient(90deg, #22c55e, #16a34a);
             color: #fff;
             padding: 14px 24px;
-            border-radius: 12px;
+            border-radius: 16px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 15.5px;
-            display: inline-block;
-            width: 100%;
-            max-width: 320px;
+            font-size: 16px;
+            display: block;
+            text-align: center;
             box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
-            margin-top: 10px;
         }
 
         .sec-title {
             text-align: center;
             font-size: 20px;
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: #fff;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 8px;
         }
 
-        .card {
+        /* CARDS WITH INNER CONTENT */
+        .card-inner {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 18px;
-            margin-bottom: 15px;
-            position: relative;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
         }
 
         .card-title {
-            font-size: 17px;
+            font-size: 17.5px;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .service-list {
@@ -187,10 +172,18 @@
         .service-list li {
             font-size: 13.5px;
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .service-list li span::before {
@@ -200,57 +193,64 @@
         }
 
         .btn-select {
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(56, 189, 248, 0.15);
             color: var(--primary);
             border: 1px solid var(--primary);
-            padding: 4px 10px;
-            border-radius: 6px;
+            padding: 5px 12px;
+            border-radius: 8px;
             font-size: 12px;
             font-weight: bold;
             text-decoration: none;
+            transition: 0.2s;
         }
 
         /* FORM */
         .form-box {
             background: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .form-box h3 {
             text-align: center;
             margin-bottom: 15px;
             font-size: 18px;
+            color: #fff;
         }
 
         input, select, textarea {
             width: 100%;
             padding: 12px;
-            background: #0f172a;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            background: #070a12;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
             color: #fff;
             font-size: 13.5px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             outline: none;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
         }
 
         .btn-submit {
             width: 100%;
-            background: var(--green);
+            background: linear-gradient(90deg, #22c55e, #16a34a);
             color: #fff;
             border: none;
             padding: 14px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 800;
-            font-size: 15.5px;
+            font-size: 16px;
             cursor: pointer;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
         }
 
         footer {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 25px;
             color: var(--text-muted);
             font-size: 12px;
         }
@@ -258,9 +258,9 @@
 </head>
 <body>
 
-    <!-- BANNER LOGO WITH ARGB -->
-    <div class="logo-banner-container">
-        <div class="argb-wrapper">
+    <div class="section-container">
+        <!-- 1. البنر الرئيسي بـ ARGB -->
+        <div class="argb-box" style="margin-top: 10px;">
             <div class="logo-banner">
                 <h1>💻 Cap <span>Hosam</span></h1>
                 <div class="tagline">&lt;/&gt; Web Developer & Graphic Designer</div>
@@ -283,80 +283,83 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- الزرار السريع -->
-    <section class="section-container hero">
-        <a href="https://wa.me/201029245615" class="btn-whatsapp">💬 تواصل عبر الواتساب مباشرة</a>
-    </section>
+        <!-- 2. زر الواتساب بـ ARGB -->
+        <div class="argb-box" style="border-radius: 18px;">
+            <a href="https://wa.me/201029245615" class="btn-whatsapp">💬 تواصل عبر الواتساب مباشرة</a>
+        </div>
 
-    <!-- قائمة الخدمات التفصيلية -->
-    <section class="section-container">
         <h2 class="sec-title">قائمة الخدمات المتاحة 💎</h2>
 
-        <!-- البرمجة -->
-        <div class="card">
-            <div class="card-title" style="color: var(--primary);">🌐 البرمجة وتطوير المواقع</div>
-            <ul class="service-list">
-                <li><span>صنع مواقع ويب سايت</span> <a href="#order" class="btn-select" onclick="setService('صنع مواقع ويب سايت')">طلب</a></li>
-                <li><span>صنع متاجر إلكترونية</span> <a href="#order" class="btn-select" onclick="setService('صنع متاجر إلكترونية')">طلب</a></li>
-                <li><span>صنع مواقع استضافة سحابية</span> <a href="#order" class="btn-select" onclick="setService('صنع مواقع استضافة سحابية')">طلب</a></li>
-                <li><span>أي نشاط آخر متوفر بإذن الله</span> <a href="#order" class="btn-select" onclick="setService('مشروع/نشاط مخصص')">طلب</a></li>
-            </ul>
+        <!-- 3. كارت البرمجة بـ ARGB -->
+        <div class="argb-box">
+            <div class="card-inner">
+                <div class="card-title" style="color: var(--primary);">🌐 البرمجة وتطوير المواقع</div>
+                <ul class="service-list">
+                    <li><span>صنع مواقع ويب سايت</span> <a href="#order" class="btn-select" onclick="setService('صنع مواقع ويب سايت')">طلب</a></li>
+                    <li><span>صنع متاجر إلكترونية</span> <a href="#order" class="btn-select" onclick="setService('صنع متاجر إلكترونية')">طلب</a></li>
+                    <li><span>صنع مواقع استضافة سحابية</span> <a href="#order" class="btn-select" onclick="setService('صنع مواقع استضافة سحابية')">طلب</a></li>
+                    <li><span>أي نشاط آخر متوفر بإذن الله</span> <a href="#order" class="btn-select" onclick="setService('مشروع/نشاط مخصص')">طلب</a></li>
+                </ul>
+            </div>
         </div>
 
-        <!-- الكورسات -->
-        <div class="card">
-            <div class="card-title" style="color: var(--gold);">🎓 كورسات البرمجة (Courses)</div>
-            <ul class="service-list">
-                <li><span>كورس Python Language</span> <a href="#order" class="btn-select" onclick="setService('كورس Python')">حجز</a></li>
-                <li><span>كورس JavaScript</span> <a href="#order" class="btn-select" onclick="setService('كورس JavaScript')">حجز</a></li>
-            </ul>
+        <!-- 4. كارت الكورسات بـ ARGB -->
+        <div class="argb-box">
+            <div class="card-inner">
+                <div class="card-title" style="color: var(--gold);">🎓 كورسات البرمجة (Courses)</div>
+                <ul class="service-list">
+                    <li><span>كورس Python Language</span> <a href="#order" class="btn-select" onclick="setService('كورس Python')">حجز</a></li>
+                    <li><span>كورس JavaScript</span> <a href="#order" class="btn-select" onclick="setService('كورس JavaScript')">حجز</a></li>
+                </ul>
+            </div>
         </div>
 
-        <!-- التصميم -->
-        <div class="card">
-            <div class="card-title" style="color: var(--purple);">🎨 خدمات التصميم والتأسيس</div>
-            <ul class="service-list">
-                <li><span>تصميم لوجو احترافي</span> <a href="#order" class="btn-select" onclick="setService('تصميم لوجو احترافي')">طلب</a></li>
-                <li><span>تصميم ليتر هيد (Letterhead)</span> <a href="#order" class="btn-select" onclick="setService('تصميم ليتر هيد')">طلب</a></li>
-                <li><span>تصميم الفولدر</span> <a href="#order" class="btn-select" onclick="setService('تصميم الفولدر')">طلب</a></li>
-                <li><span>تصميم غلاف مواقع سوشيال</span> <a href="#order" class="btn-select" onclick="setService('تصميم غلاف سوشيال')">طلب</a></li>
-                <li><span>تصميم لافتات</span> <a href="#order" class="btn-select" onclick="setService('تصميم لافتات')">طلب</a></li>
-            </ul>
+        <!-- 5. كارت التصميم بـ ARGB -->
+        <div class="argb-box">
+            <div class="card-inner">
+                <div class="card-title" style="color: var(--purple);">🎨 خدمات التصميم والتأسيس</div>
+                <ul class="service-list">
+                    <li><span>تصميم لوجو احترافي</span> <a href="#order" class="btn-select" onclick="setService('تصميم لوجو احترافي')">طلب</a></li>
+                    <li><span>تصميم ليتر هيد (Letterhead)</span> <a href="#order" class="btn-select" onclick="setService('تصميم ليتر هيد')">طلب</a></li>
+                    <li><span>تصميم الفولدر</span> <a href="#order" class="btn-select" onclick="setService('تصميم الفولدر')">طلب</a></li>
+                    <li><span>تصميم غلاف مواقع سوشيال</span> <a href="#order" class="btn-select" onclick="setService('تصميم غلاف سوشيال')">طلب</a></li>
+                    <li><span>تصميم لافتات</span> <a href="#order" class="btn-select" onclick="setService('تصميم لافتات')">طلب</a></li>
+                </ul>
+            </div>
         </div>
-    </section>
 
-    <!-- نموذج الطلب المباشر -->
-    <section class="section-container" id="order">
-        <div class="form-box">
-            <h3>تأكيد الطلب 📲</h3>
-            <input type="text" id="cName" placeholder="الاسم الكريم">
-            <input type="tel" id="cPhone" placeholder="رقم الموبايل / الواتساب">
-            
-            <select id="cService">
-                <option value="" disabled selected>اختر الخدمة أو الكورس المطلوبة</option>
-                <option value="صنع مواقع ويب سايت">صنع مواقع ويب سايت</option>
-                <option value="صنع متاجر إلكترونية">صنع متاجر إلكترونية</option>
-                <option value="صنع مواقع استضافة سحابية">صنع مواقع استضافة سحابية</option>
-                <option value="كورس Python">كورس Python Language</option>
-                <option value="كورس JavaScript">كورس JavaScript</option>
-                <option value="تصميم لوجو احترافي">تصميم لوجو احترافي</option>
-                <option value="تصميم ليتر هيد">تصميم ليتر هيد</option>
-                <option value="تصميم الفولدر">تصميم الفولدر</option>
-                <option value="تصميم غلاف سوشيال">تصميم غلاف مواقع سوشيال</option>
-                <option value="تصميم لافتات">تصميم لافتات</option>
-                <option value="نشاط مخصص آخر">نشاط مخصص آخر</option>
-            </select>
+        <!-- 6. كارت نموذج الطلب بـ ARGB -->
+        <div class="argb-box" id="order">
+            <div class="form-box">
+                <h3>تأكيد الطلب 📲</h3>
+                <input type="text" id="cName" placeholder="الاسم الكريم">
+                <input type="tel" id="cPhone" placeholder="رقم الموبايل / الواتساب">
+                
+                <select id="cService">
+                    <option value="" disabled selected>اختر الخدمة أو الكورس المطلوبة</option>
+                    <option value="صنع مواقع ويب سايت">صنع مواقع ويب سايت</option>
+                    <option value="صنع متاجر إلكترونية">صنع متاجر إلكترونية</option>
+                    <option value="صنع مواقع استضافة سحابية">صنع مواقع استضافة سحابية</option>
+                    <option value="كورس Python">كورس Python Language</option>
+                    <option value="كورس JavaScript">كورس JavaScript</option>
+                    <option value="تصميم لوجو احترافي">تصميم لوجو احترافي</option>
+                    <option value="تصميم ليتر هيد">تصميم ليتر هيد</option>
+                    <option value="تصميم الفولدر">تصميم الفولدر</option>
+                    <option value="تصميم غلاف سوشيال">تصميم غلاف مواقع سوشيال</option>
+                    <option value="تصميم لافتات">تصميم لافتات</option>
+                    <option value="نشاط مخصص آخر">نشاط مخصص آخر</option>
+                </select>
 
-            <textarea id="cNotes" rows="3" placeholder="ملاحظات إضافية (اختياري)"></textarea>
-            <button class="btn-submit" onclick="sendToWA()">📲 إرسال الطلب للواتساب</button>
+                <textarea id="cNotes" rows="3" placeholder="ملاحظات إضافية (اختياري)"></textarea>
+                <button class="btn-submit" onclick="sendToWA()">📲 إرسال الطلب للواتساب</button>
+            </div>
         </div>
-    </section>
 
-    <footer>
-        جميع الحقوق محفوظة © Cap Hosam 💻
-    </footer>
+        <footer>
+            جميع الحقوق محفوظة © Cap Hosam 💻
+        </footer>
+    </div>
 
     <script>
         function setService(val) {
