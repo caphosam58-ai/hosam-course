@@ -11,14 +11,21 @@
 
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
+            --bg-dark: #090d16;
+            --card-bg: #111827;
             --primary: #38bdf8;
             --green: #22c55e;
             --gold: #f59e0b;
             --purple: #a855f7;
             --text: #f8fafc;
             --text-muted: #94a3b8;
+        }
+
+        /* ARGB ANIMATION KEYFRAMES */
+        @keyframes argb-glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         * {
@@ -36,22 +43,28 @@
             padding-bottom: 40px;
         }
 
-        /* BANNER LOGO SECTION */
+        /* BANNER LOGO WITH ARGB LIGHTING */
         .logo-banner-container {
             padding: 15px;
             max-width: 650px;
             margin: 10px auto 0;
         }
 
-        .logo-banner {
-            background: linear-gradient(135deg, #0b1329, #1c2a4a);
-            border: 2px solid var(--primary);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+        .argb-wrapper {
             position: relative;
-            overflow: hidden;
+            border-radius: 22px;
+            padding: 3px;
+            background: linear-gradient(90deg, #ff007f, #00f0ff, #00ff66, #ff007f);
+            background-size: 300% 300%;
+            animation: argb-glow 4s ease infinite;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+        }
+
+        .logo-banner {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 22px 18px;
+            text-align: center;
         }
 
         .logo-banner h1 {
@@ -63,8 +76,9 @@
         }
 
         .logo-banner h1 span {
-            color: var(--primary);
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            background: linear-gradient(90deg, #38bdf8, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .logo-banner .tagline {
@@ -84,10 +98,10 @@
         }
 
         .pill {
-            background: rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #e2e8f0;
-            padding: 4px 10px;
+            padding: 5px 11px;
             border-radius: 12px;
             font-size: 11.5px;
             font-weight: 500;
@@ -121,7 +135,7 @@
         }
 
         .btn-whatsapp {
-            background: var(--green);
+            background: linear-gradient(90deg, #22c55e, #16a34a);
             color: #fff;
             padding: 14px 24px;
             border-radius: 12px;
@@ -131,7 +145,7 @@
             display: inline-block;
             width: 100%;
             max-width: 320px;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
             margin-top: 10px;
         }
 
@@ -151,6 +165,13 @@
             border-radius: 16px;
             padding: 18px;
             margin-bottom: 15px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
         }
 
         .card-title {
@@ -237,27 +258,29 @@
 </head>
 <body>
 
-    <!-- البنر / اللوجو الرئيسي اللى طلبته -->
+    <!-- BANNER LOGO WITH ARGB -->
     <div class="logo-banner-container">
-        <div class="logo-banner">
-            <h1>💻 Cap <span>Hosam</span></h1>
-            <div class="tagline">&lt;/&gt; Web Developer & Graphic Designer</div>
-            
-            <div class="services-pills">
-                <span class="pill tech">صنع مواقع ويب سايت</span>
-                <span class="pill tech">متاجر إلكترونية</span>
-                <span class="pill tech">استضافة سحابية</span>
-                <span class="pill course">كورسات Python & JavaScript</span>
-                <span class="pill design">تصميم لوجو</span>
-                <span class="pill design">ليتر هيد</span>
-                <span class="pill design">فولدر</span>
-                <span class="pill design">غلاف سوشيال</span>
-                <span class="pill design">لافتات</span>
-                <span class="pill">أي نشاط متوفر بإذن الله</span>
-            </div>
+        <div class="argb-wrapper">
+            <div class="logo-banner">
+                <h1>💻 Cap <span>Hosam</span></h1>
+                <div class="tagline">&lt;/&gt; Web Developer & Graphic Designer</div>
+                
+                <div class="services-pills">
+                    <span class="pill tech">صنع مواقع ويب سايت</span>
+                    <span class="pill tech">متاجر إلكترونية</span>
+                    <span class="pill tech">استضافة سحابية</span>
+                    <span class="pill course">كورسات Python & JavaScript</span>
+                    <span class="pill design">تصميم لوجو</span>
+                    <span class="pill design">ليتر هيد</span>
+                    <span class="pill design">فولدر</span>
+                    <span class="pill design">غلاف سوشيال</span>
+                    <span class="pill design">لافتات</span>
+                    <span class="pill">أي نشاط متوفر بإذن الله</span>
+                </div>
 
-            <div class="banner-phone">
-                📲 للتواصل والطلب: <strong>01029245615</strong>
+                <div class="banner-phone">
+                    📲 للتواصل والطلب: <strong>01029245615</strong>
+                </div>
             </div>
         </div>
     </div>
@@ -361,4 +384,4 @@
         }
     </script>
 </body>
-    </html>
+</html>
